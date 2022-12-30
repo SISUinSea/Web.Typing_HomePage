@@ -14,7 +14,7 @@ body{
 
 #main-page-image{
     /* font-size: 10rem; */
-    width: 400px;
+    width: 300px;
 }
 
 .main-text{
@@ -31,12 +31,12 @@ body{
     display: block;
     position: absolute;
     top: 0;
-    right: -10px;
+    right: -4px;
     width: 5px;
     height: 90%;
     background-color: black;
 }
-#dynamic.active::after{
+#dynamic.disabled::after{
     display: none;
 } 
 

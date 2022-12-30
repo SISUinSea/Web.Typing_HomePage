@@ -1,32 +1,39 @@
-let cursor = document.getElementById('dynamic');
-let index = 0;
+var cursor = document.getElementById("dynamic");
 
-function blink(){
-    cursor.classList.toggle('active');
+
+function cursorON(){
+    cursor.classList.remove('disabled');
+}
+function toggle(){
+    cursor.classList.toggle('disabled');
 }
 
-let stringArray = ["Vanitas Vanitatum", "et Omnia Vanitas"];
-
-function selectingCharArray(){
-    let selectedString = stringArray[(index++)%2];
-    let selectedCharArray = selectedString.split("");
-    console.log(selectedCharArray);
-    return selectedCharArray;
+var index = true;
+function selectingString (){
+    var stringArray = ["Vanitas Vanitatum", "et Omnia Vanitas."];
+    var seletedString = stringArray[index++%2];
+    var seletedCharArray = seletedString.split("");
+    return seletedCharArray;
 }
 
-function typing(givenCharArray){
-    if(givenCharArray.length>0){
-        cursor.textContent += givenCharArray.shift();
-        setTimeout(
-            typing(givenCharArray)
-        , 300);
+function typing(charArray){
+    if(charArray.length > 0){
+        cursor.textContent += charArray.shift();
+        setTimeout(function(){
+            typing(charArray);
+        }, 200);
+    } else {
+        var blink = setInterval(toggle, 500);
+        setTimeout(function(){
+            clearInterval(blink);
+            cursorON();
+            cursor.textContent = "";
+            typing(selectingString());
+        }, 3000);
     }
-    else {
-        cursor.textContent = "";
-        setTimeout(typing(selectingCharArray()), 3000);
-    }
 }
 
-setInterval(blink, 500);
-typing(selectingCharArray());
 
+
+
+typing(selectingString());
