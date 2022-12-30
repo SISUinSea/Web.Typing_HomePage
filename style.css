@@ -24,17 +24,21 @@ body{
 }
 #dynamic{
     display: inline-block;
+    position: relative;
 }
 #dynamic::after{
     content:"";
     display: block;
     position: absolute;
     top: 0;
-    right: 0;
-    width: 4px;
-    height: 100%;
+    right: -10px;
+    width: 5px;
+    height: 90%;
     background-color: black;
 }
+#dynamic.active::after{
+    display: none;
+} 
 
 .sub-text{
     font-family: 'Playfair Display', serif;
