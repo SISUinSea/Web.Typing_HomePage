@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: orchid;
+}
+
+.main-text{
+    font-family: 'Playfair Display', serif;
+}
+
+body{
+    display: absolute;
+    top: 50%;
+}
